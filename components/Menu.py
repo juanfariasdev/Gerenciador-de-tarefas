@@ -38,6 +38,21 @@ def Menu():
             handle_menu_choice(selected_item, tasks)
 
 def handle_menu_choice(choice, tasks):
+
+    def get_valid_task_id_input(prompt):
+        while True:
+            task_id_input = input(prompt)
+
+            if task_id_input.strip() and task_id_input.isdigit():
+                try:
+                    id = int(task_id_input)
+                    tasks.verifyRange(id)
+                    return id
+                except ValueError as e:
+                    print(f"ID da tarefa inválido. Tente novamente.")
+            else:
+                print("ID da tarefa inválido. Tente novamente.")
+
     clear_console()
     tasks.show()
     match choice:
@@ -51,7 +66,7 @@ def handle_menu_choice(choice, tasks):
                 print(f'Tarefa "{title}" adicionada na lista!')
 
         case 3:
-            task_id = int(input('\n Digite o ID da tarefa: '))
+            task_id = get_valid_task_id_input('\n Digite o ID da tarefa: ')
             text = input('\n Digite o título atualizado: ')
             
             if len(text.strip()) < 3:
@@ -62,12 +77,12 @@ def handle_menu_choice(choice, tasks):
                 print(f'A tarefa foi renomeada para "{text}" com sucesso!')
 
         case 4:
-            task_id = int(input('\n Digite o ID da tarefa: '))
+            task_id = get_valid_task_id_input('\n Digite o ID da tarefa: ')
             tasks.remove(task_id)
             print(f'A tarefa com ID {task_id} foi removida com sucesso!')
             
         case 5:
-            task_id = int(input('\n Digite o ID da tarefa: '))
+            task_id = get_valid_task_id_input('\n Digite o ID da tarefa: ')
             tasks.mark_completed(task_id)
             print(f'Tarefa com ID {task_id} concluída com sucesso!')
 
