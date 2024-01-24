@@ -15,16 +15,13 @@ class Tasks:
         self.tasks.append(Task(text))
     
     def update(self, position, text):
-        if not self.verifyRange(position):
-            self.tasks[position].title = text
+        self.tasks[position].title = text
 
     def mark_completed(self, position):
-        if not self.verifyRange(position):
-            self.tasks[position].completed = True
+        self.tasks[position].completed = True
 
     def remove(self, position):
-        if not self.verifyRange(position):
-            del self.tasks[position]
+        del self.tasks[position]
 
     def removeCompleted(self):
         self.tasks = [task for task in self.tasks if not task.completed]
