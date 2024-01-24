@@ -39,22 +39,22 @@ def Menu():
 
 def handle_menu_choice(choice, tasks):
     clear_console()
-    
-    if choice == 1:
-        title = input('\n Adicione o título da tarefa: ')
-        tasks.add(title)
-    elif choice == 2:
-        tasks.show()
-        input("Pressione ENTER para continuar")
-    elif choice == 3:
-        task_id = int(input('\n Digite o ID da tarefa: '))
-        text = input('\n Digite o texto atualizado: ')
-        tasks.update(task_id, text)
-    elif choice == 4:
-        task_id = int(input('\n Digite o ID da tarefa: '))
-        tasks.remove(task_id)
-    elif choice == 5:
-        task_id = int(input('\n Digite o ID da tarefa: '))
-        tasks.mark_completed(task_id)
-    elif choice == 6:
-        tasks.removeCompleted()
+    match choice:
+        case 1:
+            title = input('\n Adicione o título da tarefa: ')
+            tasks.add(title)   
+        case 2:
+            tasks.show()
+            input("Pressione ENTER para continuar")
+        case 3:
+            task_id = int(input('\n Digite o ID da tarefa: '))
+            text = input('\n Digite o texto atualizado: ')
+            tasks.update(task_id, text)
+        case 4:
+            task_id = int(input('\n Digite o ID da tarefa: '))
+            tasks.remove(task_id)
+        case 5:
+            task_id = int(input('\n Digite o ID da tarefa: '))
+            tasks.mark_completed(task_id)
+        case 6:
+            tasks.removeCompleted()
