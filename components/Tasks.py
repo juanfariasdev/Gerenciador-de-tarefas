@@ -9,7 +9,7 @@ class Tasks:
 
     def verifyRange(self, position):
         if position < 0 or position >= len(self.tasks):
-            raise ValueError("Position out of range")
+            raise ValueError("Posição fora do intervalo")
 
     def add(self, text):
         self.tasks.append(Task(text))
@@ -33,14 +33,14 @@ class Tasks:
         print("\nTasks")
         print("--------------------")
         if not self.tasks:
-            print("No tasks available.")
+            print("Nenhuma task cadastrada.")
             print("--------------------")
 
         else:
             for index, task in enumerate(self.tasks):
                 print(f"ID: {index}")
-                print(f"Title: {task.title}")
-                print(f"Completed: {task.completed}")
+                print(f"Título: {task.title}")
+                print(f"Completada: {task.completed}")
                 print("--------------------")
 
 
