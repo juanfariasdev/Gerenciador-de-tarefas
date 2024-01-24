@@ -55,6 +55,12 @@ def handle_menu_choice(choice, tasks):
 
     clear_console()
     tasks.show()
+
+    if choice in(3,4,5,6):
+        if len(tasks.tasks) == 0:
+            input("Pressione ENTER para continuar")
+            return False
+
     match choice:
         case 1:
             title = input('\n Adicione o título da tarefa: ')
@@ -74,20 +80,24 @@ def handle_menu_choice(choice, tasks):
                 pass
             else:
                 tasks.update(task_id, text)
+
                 print(f'A tarefa foi renomeada para "{text}" com sucesso!')
 
         case 4:
             task_id = get_valid_task_id_input('\n Digite o ID da tarefa: ')
             tasks.remove(task_id)
+
             print(f'A tarefa com ID {task_id} foi removida com sucesso!')
             
         case 5:
             task_id = get_valid_task_id_input('\n Digite o ID da tarefa: ')
             tasks.mark_completed(task_id)
+
             print(f'Tarefa com ID {task_id} concluída com sucesso!')
 
         case 6:
             tasks.removeCompleted()
+
             print(f'Tarefas concluídas removidas da lista!')
 
     input("Pressione ENTER para continuar")
